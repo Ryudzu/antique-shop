@@ -178,3 +178,33 @@ a.button {
     padding-top: 25px;
     padding-bottom: 25px;
 }
+
+.authorization-approved {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    height: 35px;
+    background: green;
+    opacity: 0.7;
+    border-radius: 5px;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 45px;
+    padding-bottom: 10px;
+}
+
+.authorization-failed {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    height: 35px;
+    background: red;
+    opacity: 0.7;
+    border-radius: 5px;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 45px;
+    padding-bottom: 10px;
+}
