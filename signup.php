@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require_once 'connection.php';
+    require_once './db_connection/connection.php';
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -10,16 +10,43 @@
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    if ($password === $confirm_password) {
-        $password = md5($password);
+    if(isset($_POST['submit'])) {
+        $err = array();
 
-        $query = "INSERT INTO `User` (`username`, `email`, `password`, `phone`, `address`) VALUES ('$username', '$email', '$password', '$phone', '$address')";
-        mysqli_query($conn, $query);
+        if(strlen($_POST['username']) < 3 or strlen($_POST['username']) > 30) {
+            $err[] = "Слишком короткий логин!";
+            $_SESSION['message'] = 'Слишком короткий логин!';
+            header('Location: index.php');
+        }
 
-        $_SESSION['message'] = 'Регистрация прошла успешно!';
-        header('Location: login.php');
-    } else {
-        $_SESSION['message'] = 'Пароли не совпадают!';
-        header('Location: register.php');
+        if(strlen($_POST['password']) < 3 or strlen($_POST['password']) > 30) {
+            $err[] = "Слишком короткий пароль!";
+            $_SESSION['message'] = 'Слишком короткий пароль!';
+            header('Location: index.php');
+        }
+
+        if($_POST['password'] !== $_POST['confirm_password']) {
+            $err[] = "Пароли не совпадают!";
+            $_SESSION['message'] = 'Пароли не совпадают!';
+            header('Location: index.php');
+        }
+
+        $check_user = mysqli_query($conn, "SELECT * FROM `User` WHERE `username` = '$username'");
+
+        if(mysqli_num_rows($check_user) > 0) {
+            $err[] = "Этот логин уже занят!";
+            $_SESSION['message'] = 'Этот логин уже занят!';
+            header('Location: index.php');
+        }
+
+        if(count($err) == 0) {
+            $password = md5(md5(trim($_POST['password'])));
+
+            $query = "INSERT INTO `User` (`username`, `email`, `password`, `phone`, `address`) VALUES ('$username', '$email', '$password', '$phone', '$address')";
+            mysqli_query($conn, $query);
+
+            $_SESSION['message_success'] = 'Регистрация прошла успешно!';
+            header('Location: login.php');
+        }
     }
 ?>

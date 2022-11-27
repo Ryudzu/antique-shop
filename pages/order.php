@@ -1,17 +1,24 @@
+<?php
+	session_start();
+	require_once '../db_connection/connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Оплата</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Sublime project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/checkout.css">
-<link rel="stylesheet" type="text/css" href="styles/checkout_responsive.css">
+	<title>Оплата</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Sublime project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+	<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../styles/order.css">
+	<link rel="stylesheet" type="text/css" href="../styles/order_responsive.css">
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/order.js"></script>
 </head>
-<body>
+<body onload="showMyOrder()">
 
 <div class="super_container">
 
@@ -27,33 +34,33 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Главная</a>
+										<a href="main.php">Главная</a>
 										<ul>
-											<li><a href="categories.html">Категории</a></li>
-											<li><a href="product.html">Товары</a></li>
-											<li><a href="cart.html">Корзина</a></li>
-											<li><a href="checkout.html">Оплата</a></li>
-											<li><a href="contact.html">Контакты</a></li>
+											<li><a href="categories.php">Категории</a></li>
+											<li><a href="product.php">Товары</a></li>
+											<li><a href="cart.php">Корзина</a></li>
+											<li><a href="order.php">Оплата</a></li>
+											<li><a href="contact.php">Контакты</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Категории</a>
+										<a href="categories.php">Категории</a>
 										<ul>
-											<li><a href="categories.html">Сервиз</a></li>
-											<li><a href="categories.html">Часы</a></li>
-											<li><a href="categories.html">Лампы</a></li>
-											<li><a href="categories.html">Шкатулки</a></li>
-											<li><a href="categories.html">Вазы</a></li>
+											<li><a href="categories.php">Сервиз</a></li>
+											<li><a href="categories.php">Часы</a></li>
+											<li><a href="categories.php">Лампы</a></li>
+											<li><a href="categories.php">Шкатулки</a></li>
+											<li><a href="categories.php">Вазы</a></li>
 										</ul>
 									</li>
 									<li><a href="#">Другое</a></li>
 									<li><a href="#">Пожелания</a></li>
-									<li><a href="contact.html">Контакты</a></li>
+									<li><a href="contact.php">Контакты</a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<a href="cart.php">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>
@@ -135,28 +142,28 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Главная<i class="fa fa-angle-down"></i></a>
+						<a href="main.php">Главная<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Категории<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.html">Товары<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="cart.html">Корзина<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Оплата<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Категории<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="product.php">Товары<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="cart.php">Корзина<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="checkout.php">Оплата<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Категории<i class="fa fa-angle-down"></i></a>
+						<a href="categories.php">Категории<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Сервиз<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Часы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Лампы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Шкатулки<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Вазы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Часы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Лампы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Вазы<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Другое<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="main.php">Другое<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Пожелания<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -185,8 +192,8 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Главная</a></li>
-										<li><a href="cart.html">Корзина покупок</a></li>
+										<li><a href="main.php">Главная</a></li>
+										<li><a href="cart.php">Корзина покупок</a></li>
 										<li>Оплата</li>
 									</ul>
 								</div>
@@ -210,96 +217,37 @@
 						<div class="section_title">Адрес счета</div>
 						<div class="section_subtitle">Введите вашу адресную информацию</div>
 						<div class="checkout_form_container">
-							<form action="#" id="checkout_form" class="checkout_form">
-								<div class="row">
-									<div class="col-xl-6">
-										<!-- Name -->
-										<label for="checkout_name">Имя*</label>
-										<input type="text" id="checkout_name" class="checkout_input" required="required">
-									</div>
-									<div class="col-xl-6 last_name_col">
-										<!-- Last Name -->
-										<label for="checkout_last_name">Фамилия*</label>
-										<input type="text" id="checkout_last_name" class="checkout_input" required="required">
-									</div>
-								</div>
+							<form action="order_details.php" method="POST" id="checkout_form" name="checkout_form" class="checkout_form">
 								<div>
-									<!-- Company -->
-									<label for="checkout_company">Компания</label>
-									<input type="text" id="checkout_company" class="checkout_input">
-								</div>
-								<div>
-									<!-- Country -->
-									<label for="checkout_country">Страна*</label>
-									<select name="checkout_country" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
-										<option></option>
-										<option>Беларусь</option>
-										<option>Швеция</option>
-										<option>Франция</option>
-										<option>США</option>
-									</select>
+									<!-- Username -->
+									<label for="checkout_username">Имя*</label>
+									<input type="text" id="checkout_username" name="checkout_username" class="checkout_input" required="required">
 								</div>
 								<div>
 									<!-- Address -->
 									<label for="checkout_address">Адрес*</label>
-									<input type="text" id="checkout_address" class="checkout_input" required="required">
-									<input type="text" id="checkout_address_2" class="checkout_input checkout_address_2" required="required">
-								</div>
-								<div>
-									<!-- Zipcode -->
-									<label for="checkout_zipcode">Почтовый индекс*</label>
-									<input type="text" id="checkout_zipcode" class="checkout_input" required="required">
-								</div>
-								<div>
-									<!-- City / Town -->
-									<label for="checkout_city">Город*</label>
-									<select name="checkout_city" id="checkout_city" class="dropdown_item_select checkout_input" require="required">
-										<option></option>
-										<option>Минск</option>
-										<option>Стокгольм</option>
-										<option>Париж</option>
-										<option>Вашингтон</option>
-									</select>
-								</div>
-								<div>
-									<!-- Province -->
-									<label for="checkout_province">Провинция*</label>
-									<select name="checkout_province" id="checkout_province" class="dropdown_item_select checkout_input" require="required">
-										<option></option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-									</select>
-								</div>
-								<div>
-									<!-- Phone no -->
-									<label for="checkout_phone">Телефон*</label>
-									<input type="phone" id="checkout_phone" class="checkout_input" required="required">
+									<input type="text" id="checkout_address" name="checkout_address" class="checkout_input" required="required">
 								</div>
 								<div>
 									<!-- Email -->
-									<label for="checkout_email">Почтовый адрес*</label>
-									<input type="phone" id="checkout_email" class="checkout_input" required="required">
+									<label for="checkout_email">Почта*</label>
+									<input type="text" id="checkout_email" name="checkout_email" class="checkout_input" required>
 								</div>
-								<div class="checkout_extra">
-									<div>
-										<input type="checkbox" id="checkbox_terms" name="regular_checkbox" class="regular_checkbox" checked="checked">
-										<label for="checkbox_terms"><img src="images/check.png" alt=""></label>
-										<span class="checkbox_title">Условия и положения</span>
-									</div>
-									<div>
-										<input type="checkbox" id="checkbox_account" name="regular_checkbox" class="regular_checkbox">
-										<label for="checkbox_account"><img src="images/check.png" alt=""></label>
-										<span class="checkbox_title">Создать аккаунт</span>
-									</div>
-									<div>
-										<input type="checkbox" id="checkbox_newsletter" name="regular_checkbox" class="regular_checkbox">
-										<label for="checkbox_newsletter"><img src="images/check.png" alt=""></label>
-										<span class="checkbox_title">Подписка на новостную ленту</span>
-									</div>
+								<div>
+									<!-- Comment -->
+									<label for="checkout_comment">Коментарий</label>
+									<input type="text" id="checkout_comment" name="checkout_comment" class="checkout_input">
 								</div>
+								<div class="button order_button"><a href="#">
+									<button type="submit" name="submit" style="border: none; width: 100%; cursor: pointer;">Сделать заказ</button>
+								</a></div>
 							</form>
+							<?php
+									if($_SESSION['order']){
+										echo '<div> ' . $_SESSION['order'] . ' </div>';
+									}
+									unset($_SESSION['order']);
+                        	?>
 						</div>
 					</div>
 				</div>
@@ -312,29 +260,11 @@
 						<div class="section_subtitle">Детали заказа</div>
 
 						<!-- Order details -->
-						<div class="order_list_container">
+						<div class="order_list_container" id="in-order">
 							<div class="order_list_bar d-flex flex-row align-items-center justify-content-start">
 								<div class="order_list_title">Товар</div>
 								<div class="order_list_value ml-auto">Итого</div>
 							</div>
-							<ul class="order_list">
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Японская статуэтка</div>
-									<div class="order_list_value ml-auto">$59.90</div>
-								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Итого</div>
-									<div class="order_list_value ml-auto">$59.90</div>
-								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Доставка</div>
-									<div class="order_list_value ml-auto">Бесплатно</div>
-								</li>
-								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="order_list_title">Итого</div>
-									<div class="order_list_value ml-auto">$59.90</div>
-								</li>
-							</ul>
 						</div>
 
 						<!-- Payment Options -->
@@ -361,7 +291,6 @@
 
 						<!-- Order Text -->
 						<div class="order_text">После заказа ожидайте звонок от курьера. Вам обязательно позвонят!</div>
-						<div class="button order_button"><a href="#">Сделать заказ</a></div>
 					</div>
 				</div>
 			</div>
@@ -396,16 +325,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
 	</footer>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/checkout.js"></script>
+<script src="../styles/bootstrap4/popper.js"></script>
+<script src="../styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../plugins/greensock/TweenMax.min.js"></script>
+<script src="../plugins/greensock/TimelineMax.min.js"></script>
+<script src="../plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../plugins/greensock/animation.gsap.min.js"></script>
+<script src="../plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="../plugins/easing/easing.js"></script>
+<script src="../plugins/parallax-js-master/parallax.min.js"></script>
 </body>
 </html>

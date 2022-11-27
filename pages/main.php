@@ -1,18 +1,25 @@
+<?php
+    session_start();
+    require_once '../db_connection/connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Antique store</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Sublime project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
-<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="../styles/responsive.css">
+	<title>Antique store</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Sublime project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+	<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="../styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="../styles/responsive.css">
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/cart.js"></script>
 </head>
 <body>
 
@@ -30,33 +37,41 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Главная</a>
+										<a href="main.php">Главная</a>
 										<ul>
-											<li><a href="categories.html">Категории</a></li>
-											<li><a href="product.html">Товары</a></li>
-											<li><a href="cart.html">Корзина</a></li>
-											<li><a href="checkout.html">Оплата</a></li>
-											<li><a href="contact.html">Контакты</a></li>
+											<li><a href="categories.php">Категории</a></li>
+											<li><a href="product.php">Товары</a></li>
+											<li><a href="cart.php">Корзина</a></li>
+											<li><a href="order.php">Оплата</a></li>
+											<li><a href="contact.php">Контакты</a></li>
 										</ul>
 									</li>
+
+									<?php
+										$show_categories = mysqli_query($conn, "SELECT * FROM `Category`");
+
+										$categories = array();
+						
+										while ($category_info = mysqli_fetch_array($show_categories, MYSQLI_ASSOC)) {
+											$categories[] = $category_info;
+										}
+									?>
 									<li class="hassubs">
-										<a href="categories.html">Категории</a>
+										<a href="categories.php">Категории</a>
 										<ul>
-											<li><a href="categories.html">Сервиз</a></li>
-											<li><a href="categories.html">Часы</a></li>
-											<li><a href="categories.html">Лампы</a></li>
-											<li><a href="categories.html">Шкатулки</a></li>
-											<li><a href="categories.html">Вазы</a></li>
+										<?foreach($categories as $category):?>
+											<li><a href="categories.php"><?=$category['title']?></a></li>
+										<?endforeach?>
 										</ul>
 									</li>
 									<li><a href="#">Другое</a></li>
 									<li><a href="#">Пожелания</a></li>
-									<li><a href="contact.html">Контакты</a></li>
+									<li><a href="contact.php">Контакты</a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<a href="cart.php">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>
@@ -67,7 +82,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
 											</g>
 										</svg>
-										<div>Корзина <span>(0)</span></div>
+										<div>Корзина</div>
 									</a>
 								</div>
 								<div class="search">
@@ -138,28 +153,28 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Главная<i class="fa fa-angle-down"></i></a>
+						<a href="main.php">Главная<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Категории<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.html">Товары<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="cart.html">Корзина<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Оплата<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Категории<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="product.php">Товары<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="cart.php">Корзина<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="checkout.php">Оплата<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Категории<i class="fa fa-angle-down"></i></a>
+						<a href="categories.php">Категории<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Сервиз<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Часы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Лампы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Шкатулки<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Вазы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Часы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Лампы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Вазы<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Другое<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="main.php">Другое<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Пожелания<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -279,7 +294,7 @@
 					</div>
 					<div class="avds_small_content">
 						<div class="avds_title">Лазуритовая шкатулка</div>
-						<div class="avds_link"><a href="categories.html">Узнать подробнее</a></div>
+						<div class="avds_link"><a href="categories.php">Узнать подробнее</a></div>
 					</div>
 				</div>
 			</div>
@@ -289,7 +304,7 @@
 					<div class="avds_large_content">
 						<div class="avds_title">Антикварные часы</div>
 						<div class="avds_text">Часовые механизмы, отмеряющие минуты и секунды нашей жизни… В них есть что-то мистическое и одновременно с этим притягательное. Сделать такое редкое приобретение – это большая удача для коллекционера, которая еще долго будет согревать его душу.</div>
-						<div class="avds_link avds_link_large"><a href="categories.html">Узнать подробнее</a></div>
+						<div class="avds_link avds_link_large"><a href="categories.php">Узнать подробнее</a></div>
 					</div>
 				</div>
 			</div>
@@ -302,87 +317,33 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					
 					<div class="product_grid">
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_1.jpg" alt=""></div>
-							<div class="product_extra product_new"><a href="categories.html">Новое</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Лампа</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
+						<!-- Product Show -->
+						<?php
+							$show_products = mysqli_query($conn, "SELECT * FROM `Product`");
 
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_2.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Распродажа</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Парта</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_3.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Часы</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_4.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Японская статуэтка</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_5.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Кружка</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_6.jpg" alt=""></div>
-							<div class="product_extra product_hot"><a href="categories.html">Хит</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Лампа</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_7.jpg" alt=""></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Ваза</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-						<!-- Product -->
-						<div class="product">
-							<div class="product_image"><img src="../images/product_8.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
-							<div class="product_content">
-								<div class="product_title"><a href="product.html">Фруктовница</a></div>
-								<div class="product_price">$670</div>
-							</div>
-						</div>
-
-					</div>
+							$products = array();
 						
+							while ($product_info = mysqli_fetch_array($show_products, MYSQLI_ASSOC)) {
+								$products[] = $product_info;
+							}
+						?>
+
+						<?foreach($products as $product):?>
+							<div class="product" name="product_id" data-id="<?=$product['idProduct']?>">
+								<div class="product_image"><img src="<?=$product['image']?>" alt=""></div>
+								<div class="product_content">
+									<div class="product_title"><a href="product.html"><?=$product['title']?></a></div>
+									<div class="product_price"><?=$product['price']?> BYN</div>
+									<div class="product_instock">В наличии: <?=$product['instock']?></div>
+									<div>
+										<input type="button" class="product_buy" value="В корзину" onclick="addToCart(<?=$product['idProduct']?>)">
+									</div>
+								</div>
+							</div>
+						<?endforeach?>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -399,7 +360,7 @@
 						<div class="avds_xl_content">
 							<div class="avds_title">Отличные товары</div>
 							<div class="avds_text">Большой ассортимент, низкие цены и все это в Antique store!</div>
-							<div class="avds_link avds_xl_link"><a href="categories.html">Узнать подробнее</a></div>
+							<div class="avds_link avds_xl_link"><a href="categories.php">Узнать подробнее</a></div>
 						</div>
 					</div>
 				</div>
@@ -504,7 +465,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
 	</footer>
 </div>
 
-<script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../styles/bootstrap4/popper.js"></script>
 <script src="../styles/bootstrap4/bootstrap.min.js"></script>
 <script src="../plugins/greensock/TweenMax.min.js"></script>

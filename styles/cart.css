@@ -1283,6 +1283,26 @@ label
 {
 	width: 100%;
 }
+.delete_item
+{
+	padding: 0px 20px;
+	margin-top: 40px;
+	height: 40px;
+	color:black;
+	cursor: pointer;
+	text-transform: uppercase;
+	border: 2px solid black;
+	background: white;
+}
+
+.delete_item:hover {
+	background: #232323;
+	color: white;
+}
+
+.delete_item:active {
+	transform: scale(0.9);
+}
 
 /*********************************
 7. Footer

@@ -6,13 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/categories.css">
-<link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="../styles/categories.css">
+<link rel="stylesheet" type="text/css" href="../styles/categories_responsive.css">
 </head>
 <body>
 
@@ -30,33 +30,33 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Главная</a>
+										<a href="main.php">Главная</a>
 										<ul>
-											<li><a href="categories.html">Категории</a></li>
-											<li><a href="product.html">Товары</a></li>
-											<li><a href="cart.html">Корзина</a></li>
-											<li><a href="checkout.html">Оплата</a></li>
-											<li><a href="contact.html">Контакты</a></li>
+											<li><a href="categories.php">Категории</a></li>
+											<li><a href="product.php">Товары</a></li>
+											<li><a href="cart.php">Корзина</a></li>
+											<li><a href="checkout.php">Оплата</a></li>
+											<li><a href="contact.php">Контакты</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Категории</a>
+										<a href="categories.php">Категории</a>
 										<ul>
-											<li><a href="categories.html">Сервиз</a></li>
-											<li><a href="categories.html">Часы</a></li>
-											<li><a href="categories.html">Лампы</a></li>
-											<li><a href="categories.html">Шкатулки</a></li>
-											<li><a href="categories.html">Вазы</a></li>
+											<li><a href="categories.php">Сервиз</a></li>
+											<li><a href="categories.php">Часы</a></li>
+											<li><a href="categories.php">Лампы</a></li>
+											<li><a href="categories.php">Шкатулки</a></li>
+											<li><a href="categories.php">Вазы</a></li>
 										</ul>
 									</li>
 									<li><a href="#">Другое</a></li>
 									<li><a href="#">Пожелания</a></li>
-									<li><a href="contact.html">Контакты</a></li>
+									<li><a href="contact.php">Контакты</a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<a href="cart.php">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>
@@ -138,28 +138,28 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Главная<i class="fa fa-angle-down"></i></a>
+						<a href="main.php">Главная<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Категории<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.html">Товары<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="cart.html">Корзина<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Оплата<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Категории<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="product.php">Товары<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="cart.php">Корзина<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="checkout.php">Оплата<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Категории<i class="fa fa-angle-down"></i></a>
+						<a href="categories.php">Категории<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Сервиз<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Часы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Лампы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Шкатулки<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Вазы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Часы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Лампы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Вазы<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Другое<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="main.php">Другое<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Пожелания<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -180,7 +180,7 @@
 
 	<div class="home">
 		<div class="home_container">
-			<div class="home_background" style="background-image:url(images/avds_large.jpg)"></div>
+			<div class="home_background" style="background-image:url(../images/avds_large.jpg)"></div>
 			<div class="home_content_container">
 				<div class="container">
 					<div class="row">
@@ -231,117 +231,129 @@
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_1.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_1.jpg" alt=""></div>
 							<div class="product_extra product_new"><a href="categories.html">Новое</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Лампа</a></div>
+								<div class="product_title"><a href="product.php">Лампа</a></div>
 								<div class="product_price">$670</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_2.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Распродажа</a></div>
+							<div class="product_image"><img src="../images/product_2.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Распродажа</a></div>
 							<div class="product_content">
 								<div class="product_title"><a href="product.html">Парта</a></div>
 								<div class="product_price">$520</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_3.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_3.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Часы</a></div>
+								<div class="product_title"><a href="product.php">Часы</a></div>
 								<div class="product_price">$710</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_4.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_4.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Японская статуэтка</a></div>
+								<div class="product_title"><a href="product.php">Японская статуэтка</a></div>
 								<div class="product_price">$330</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_5.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_5.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Кружка</a></div>
+								<div class="product_title"><a href="product.php">Кружка</a></div>
 								<div class="product_price">$170</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_6.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_6.jpg" alt=""></div>
 							<div class="product_extra product_hot"><a href="categories.html">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Лампа</a></div>
+								<div class="product_title"><a href="product.php">Лампа</a></div>
 								<div class="product_price">$240</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_7.jpg" alt=""></div>
+							<div class="product_image"><img src="../images/product_7.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Ваза</a></div>
+								<div class="product_title"><a href="product.php">Ваза</a></div>
 								<div class="product_price">$70</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_8.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
+							<div class="product_image"><img src="../images/product_8.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Фруктовница</a></div>
+								<div class="product_title"><a href="product.php">Фруктовница</a></div>
 								<div class="product_price">$490</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_9.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
+							<div class="product_image"><img src="../images/product_9.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Граммофон</a></div>
+								<div class="product_title"><a href="product.php">Граммофон</a></div>
 								<div class="product_price">$410</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_10.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
+							<div class="product_image"><img src="../images/product_10.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Подсвечник</a></div>
+								<div class="product_title"><a href="product.php">Подсвечник</a></div>
 								<div class="product_price">$365</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_11.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
+							<div class="product_image"><img src="../images/product_11.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Конфетница</a></div>
+								<div class="product_title"><a href="product.php">Конфетница</a></div>
 								<div class="product_price">$195</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
 						<!-- Product -->
 						<div class="product">
-							<div class="product_image"><img src="images/product_12.jpg" alt=""></div>
-							<div class="product_extra product_sale"><a href="categories.html">Хит</a></div>
+							<div class="product_image"><img src="../images/product_12.jpg" alt=""></div>
+							<div class="product_extra product_sale"><a href="categories.php">Хит</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="product.html">Тарелка</a></div>
+								<div class="product_title"><a href="product.php">Тарелка</a></div>
 								<div class="product_price">$580</div>
+								<div class="product_instock">В наличии: 4</div>
 							</div>
 						</div>
 
@@ -368,7 +380,7 @@
 				<!-- Icon Box -->
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box">
-						<div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
+						<div class="icon_box_image"><img src="../images/icon_1.svg" alt=""></div>
 						<div class="icon_box_title">Доставка по всему миру</div>
 						<div class="icon_box_text">
 							<p>Лучший интернет-магазин, предоставляющий доставку по всему земному шару!</p>
@@ -379,7 +391,7 @@
 				<!-- Icon Box -->
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box">
-						<div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
+						<div class="icon_box_image"><img src="../images/icon_2.svg" alt=""></div>
 						<div class="icon_box_title">Бесплатные возвраты</div>
 						<div class="icon_box_text">
 							<p>Не понравился товар? Мы вернем вам деньги!</p>
@@ -390,7 +402,7 @@
 				<!-- Icon Box -->
 				<div class="col-lg-4 icon_box_col">
 					<div class="icon_box">
-						<div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
+						<div class="icon_box_image"><img src="../images/icon_3.svg" alt=""></div>
 						<div class="icon_box_title">Онлайн поддержка 24/7</div>
 						<div class="icon_box_text">
 							<p>Круглосуточная поддержка в реальном времени поможет с любым вашим вопросом!</p>
@@ -456,18 +468,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
 	</footer>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/categories.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../styles/bootstrap4/popper.js"></script>
+<script src="../styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../plugins/greensock/TweenMax.min.js"></script>
+<script src="../plugins/greensock/TimelineMax.min.js"></script>
+<script src="../plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../plugins/greensock/animation.gsap.min.js"></script>
+<script src="../plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="../plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="../plugins/easing/easing.js"></script>
+<script src="../plugins/parallax-js-master/parallax.min.js"></script>
+<script src="../js/categories.js"></script>
 </body>
 </html>

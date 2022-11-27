@@ -1,3 +1,9 @@
+<?php
+	session_start();
+    require_once '../db_connection/connection.php';
+	include 'checkout.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +12,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/cart.css">
-<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../styles/cart.css">
+<link rel="stylesheet" type="text/css" href="../styles/cart_responsive.css">
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/cart.js"></script>
 </head>
-<body>
+<body onload="showMyCart()">
 
 <div class="super_container">
 
@@ -27,46 +35,31 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Главная</a>
+										<a href="main.php">Главная</a>
 										<ul>
-											<li><a href="categories.html">Категории</a></li>
-											<li><a href="product.html">Товары</a></li>
-											<li><a href="cart.html">Корзина</a></li>
-											<li><a href="checkout.html">Оплата</a></li>
-											<li><a href="contact.html">Контакты</a></li>
+											<li><a href="categories.php">Категории</a></li>
+											<li><a href="product.php">Товары</a></li>
+											<li><a href="cart.php">Корзина</a></li>
+											<li><a href="checkout.php">Оплата</a></li>
+											<li><a href="contact.php">Контакты</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Категории</a>
+										<a href="categories.php">Категории</a>
 										<ul>
-											<li><a href="categories.html">Сервиз</a></li>
-											<li><a href="categories.html">Часы</a></li>
-											<li><a href="categories.html">Лампы</a></li>
-											<li><a href="categories.html">Шкатулки</a></li>
-											<li><a href="categories.html">Вазы</a></li>
+											<li><a href="categories.php">Сервиз</a></li>
+											<li><a href="categories.php">Часы</a></li>
+											<li><a href="categories.php">Лампы</a></li>
+											<li><a href="categories.php">Шкатулки</a></li>
+											<li><a href="categories.php">Вазы</a></li>
 										</ul>
 									</li>
 									<li><a href="#">Другое</a></li>
 									<li><a href="#">Пожелания</a></li>
-									<li><a href="contact.html">Контакты</a></li>
+									<li><a href="contact.php">Контакты</a></li>
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
-								<div class="shopping_cart">
-									<a href="cart.html">
-										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
-											<g>
-												<path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3
-													c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1
-													C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462
-													H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41
-													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
-											</g>
-										</svg>
-										<div>Корзина <span>(0)</span></div>
-									</a>
-								</div>
 								<div class="search">
 									<div class="search_icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -135,28 +128,28 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="index.html">Главная<i class="fa fa-angle-down"></i></a>
+						<a href="main.php">Главная<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Категории<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.html">Товары<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="cart.html">Корзина<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.html">Оплата<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Категории<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="product.php">Товары<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="cart.php">Корзина<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="checkout.php">Оплата<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.html">Категории<i class="fa fa-angle-down"></i></a>
+						<a href="categories.php">Категории<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.html">Сервиз<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Часы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Лампы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Шкатулки<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.html">Вазы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Часы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Лампы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories.php">Вазы<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="index.html">Другое<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="main.php">Другое<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Пожелания<i class="fa fa-angle-down"></i></a></li>
-					<li class="page_menu_item menu_mm"><a href="contact.html">Контакты<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -185,8 +178,8 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Главная</a></li>
-										<li><a href="categories.html">Категории</a></li>
+										<li><a href="main.php">Главная</a></li>
+										<li><a href="categories.php">Категории</a></li>
 										<li>Корзина</li>
 									</ul>
 								</div>
@@ -205,56 +198,24 @@
 			<div class="row">
 				<div class="col">
 					<!-- Column Titles -->
-					<div class="cart_info_columns clearfix">
+					<div class="cart_info_columns clearfix" id="in-check">
 						<div class="cart_info_col cart_info_col_product">Товары</div>
 						<div class="cart_info_col cart_info_col_price">Цена</div>
 						<div class="cart_info_col cart_info_col_quantity">Количество</div>
-						<div class="cart_info_col cart_info_col_total">Итого</div>
+						<div class="cart_info_col cart_info_col_total">ID Товара</div>
 					</div>
-				</div>
-			</div>
-			<div class="row cart_items_row">
-				<div class="col">
-
-					<!-- Cart Item -->
-					<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-						<!-- Name -->
-						<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-							<div class="cart_item_image">
-								<div><img src="images/cart_1.jpg" alt=""></div>
-							</div>
-							<div class="cart_item_name_container">
-								<div class="cart_item_name"><a href="#">Антикварный чайник</a></div>
-								<div class="cart_item_edit"><a href="#">Изменить выбор</a></div>
-							</div>
-						</div>
-						<!-- Price -->
-						<div class="cart_item_price">$790.90</div>
-						<!-- Quantity -->
-						<div class="cart_item_quantity">
-							<div class="product_quantity_container">
-								<div class="product_quantity clearfix">
-									<span>Кол-во</span>
-									<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-									<div class="quantity_buttons">
-										<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-										<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Total -->
-						<div class="cart_item_total">$790.90</div>
-					</div>
-
 				</div>
 			</div>
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="#">Продолжить покупки</a></div>
+						<div class="button continue_shopping_button"><a href="main.php">Продолжить покупки</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="#">Очистить корзину</a></div>
+							<form action="checkout.php" method="POST" class="clear_cart_button">
+								<div class="button clear_cart_button"><a href="#">
+									<button type="submit" name="delall" style="border: none; width: 100%; cursor: pointer;">Очистить корзину</button>
+								</a></div>
+							</form>
 							<div class="button update_cart_button"><a href="#">Обновить корзину</a></div>
 						</div>
 					</div>
@@ -319,7 +280,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="#">Оформить заказ</a></div>
+						<div class="button checkout_button"><a href="order.php">Оформить заказ</a></div>
 					</div>
 				</div>
 			</div>
@@ -354,16 +315,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Вс�
 	</footer>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/cart.js"></script>
+<script src="../styles/bootstrap4/popper.js"></script>
+<script src="../styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../plugins/greensock/TweenMax.min.js"></script>
+<script src="../plugins/greensock/TimelineMax.min.js"></script>
+<script src="../plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../plugins/greensock/animation.gsap.min.js"></script>
+<script src="../plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="../plugins/easing/easing.js"></script>
+<script src="../plugins/parallax-js-master/parallax.min.js"></script>
 </body>
 </html>

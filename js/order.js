@@ -211,3 +211,20 @@ $(document).ready(function()
 	}
 
 });
+
+function showMyOrder() {
+	console.log('show');
+	$.ajax({
+		async: false,
+		type: "POST",
+		url: "/pages/order_details.php",
+		dataType: "text",
+		data: 'action=show',
+		error: function () {
+			alert("Произошла ошибка при добавлении товара");
+		},
+		success: function(response) {
+			$('#in-order').html(response);
+		}
+	});
+}

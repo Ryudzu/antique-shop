@@ -211,3 +211,57 @@ $(document).ready(function()
 	}
 
 });
+
+function addToCart(idProduct) {
+	console.log('add' + idProduct);
+	$.ajax({
+		async: false,
+		type: "GET",
+		url: "/pages/checkout.php",
+		dataType: "text",
+		data: 'action=add&id=' + idProduct,
+		error: function () {
+			alert("Не смог");
+		},
+		success: function(response) {
+			alert('Добавили ' + idProduct);
+		}
+	});
+}
+
+function showMyCart() {
+	console.log('show');
+	$.ajax({
+		async: false,
+		type: "GET",
+		url: "/pages/checkout.php",
+		dataType: "text",
+		data: 'action=show',
+		error: function () {
+			alert("Произошла ошибка при добавлении товара");
+		},
+		success: function(response) {
+			$('#in-check').html(response);
+		}
+	});
+}
+
+function delFromCart(idProduct) {
+	console.log('del ' + idProduct);
+	$.ajax({
+		async: false,
+		type: "GET",
+		url: "/pages/checkout.php",
+		dataType: "text",
+		data: 'action=del&id=' + idProduct,
+		error: function () {
+			alert("Произошла ошибка при удалении товара");
+		},
+		success: function(response) {
+			showMyCart();
+			console.log(response);
+		}
+	});
+}
+
+

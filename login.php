@@ -33,9 +33,13 @@
                         <a href="register.php" target="_self" class="button button-login">Регистрация</a>
                     </div>
                     <?php
-                        if ($_SESSION['message']) {
-                            echo '<div class="button" style="background: green; opacity: 0.7; margin-top: 20px;"> ' . $_SESSION['message'] . ' </div>';
+                        if ($_SESSION['message_success']) {
+                            echo '<div class="button" style="background: green; opacity: 0.7; margin-top: 20px; line-height: 35px;"> ' . $_SESSION['message_success'] . ' </div>';
                         }
+                        if ($_SESSION['message']) {
+                            echo '<div class="button" style="background: red; opacity: 0.7; margin-top: 20px; line-height: 35px;"> ' . $_SESSION['message'] . ' </div>';
+                        }
+                        unset($_SESSION['message_success']);
                         unset($_SESSION['message']);
                     ?>
                 </form>
