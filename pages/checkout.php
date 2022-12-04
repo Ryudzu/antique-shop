@@ -4,6 +4,10 @@
 
 	$action = $_GET['action'];
 	if ($action == 'show') {
+		if(!isset($_SESSION['user'])) {
+			echo 'Вы не вошли в систему и не можете добавлять товар в корзину!';
+			exit;
+		}
 		if(!(isset($_SESSION['cart']))) {
 			echo 'У вас нет заказов';
 			exit;
@@ -78,7 +82,6 @@ if ($action == 'add') {
 	$_SESSION['cart'] = $cart;
 
 	$count = '1';
-
 	$addtodb = "INSERT INTO `PurchaseProduct` (`product_id`, `count`) VALUES ('$id', '$count')";
 	$result_add = mysqli_query($conn, $addtodb);
 }

@@ -4,6 +4,10 @@
 
 	$action = $_POST['action'];
 	if ($action == 'show') {
+		if(!isset($_SESSION['user'])) {
+			echo 'Вы не вошли в систему и не можете оформлять заказы!';
+			exit;
+		}
 		if(!(isset($_SESSION['cart']))) {
 			echo 'У вас нет заказов';
 			exit;
@@ -43,27 +47,37 @@
 }
 
 if(isset($_POST['submit'])) {
-	$total = 0;
-	$orderDate = date('Y-m-d');
-	$username = $_POST["checkout_username"];
-	$address = $_POST["checkout_address"];
-	$email = $_POST["checkout_email"];
-	$comment = $_POST["checkout_comment"];
+	if(isset($_SESSION['user'])) {
+		$total = 0;
+		$orderDate = date('Y-m-d');
+		$username = $_POST["checkout_username"];
+		$address = $_POST["checkout_address"];
+		$email = $_POST["checkout_email"];
+		$comment = $_POST["checkout_comment"];
 	
-	$sql_user = mysqli_query($conn, "SELECT `idUser` FROM `User` WHERE `username` = '$username'");
-	$user_sort = mysqli_fetch_assoc($sql_user);
-	$user_id = array_values($user_sort)[0];
+		$sql_user = mysqli_query($conn, "SELECT `idUser` FROM `User` WHERE `username` = '$username'");
+		$user_sort = mysqli_fetch_assoc($sql_user);
+		$user_id = array_values($user_sort)[0];
 	
-	$sql_product = mysqli_query($conn, "SELECT `product_id` FROM `PurchaseProduct`");
-	$product_sort = mysqli_fetch_assoc($sql_product);
-	$product_id = array_values($product_sort)[0];
+		$sql_product = mysqli_query($conn, "SELECT `product_id` FROM `PurchaseProduct`");
+		$product_sort = mysqli_fetch_assoc($sql_product);
+		$product_id = array_values($product_sort)[0];
 
-	$get_order = "INSERT INTO `Order` (`user_id`, `comment`, `date`, `product_order_id`, `username`, `email`, `address`)
-	VALUES
-	('$user_id', '$comment', '$orderDate', '$product_id', '$username', '$email', '$address')";
-	mysqli_query($conn, $get_order);
+		$get_order = "INSERT INTO `Order` (`user_id`, `comment`, `date`, `product_order_id`, `username`, `email`, `address`)
+		VALUES
+		('$user_id', '$comment', '$orderDate', '$product_id', '$username', '$email', '$address')";
+		$order = mysqli_query($conn, $get_order);
 
-	$_SESSION['order'] = 'Ваш заказ был успешно сделан и находится в обработке!';
-	header('Location: order.php');
+		if ($order) {
+			$_SESSION['order'] = 'Ваш заказ был успешно сделан и находится в обработке!';
+			header('Location: order.php');
+		} else {
+			$_SESSION['order_fail'] = 'Упс, произошла ошибка! Выберите товар.';
+			header('Location: order.php');
+		}
+	} else {
+		$_SESSION['order_err'] = 'Необходимо войти в систему!';
+		header('Location: order.php');
+	}
 }
 ?>

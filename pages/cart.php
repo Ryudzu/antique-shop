@@ -7,17 +7,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Корзина</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Sublime project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
-<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="../styles/cart.css">
-<link rel="stylesheet" type="text/css" href="../styles/cart_responsive.css">
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../js/cart.js"></script>
+	<title>Корзина</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Sublime project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+	<link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../styles/cart.css">
+	<link rel="stylesheet" type="text/css" href="../styles/cart_responsive.css">
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/cart.js"></script>
 </head>
 <body onload="showMyCart()">
 
@@ -35,27 +35,38 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="main.php">Главная</a>
+										<a href="../index.php">Главная</a>
 										<ul>
-											<li><a href="categories.php">Категории</a></li>
-											<li><a href="product.php">Товары</a></li>
+											<li><a href="../index.php">Товары</a></li>
 											<li><a href="cart.php">Корзина</a></li>
-											<li><a href="checkout.php">Оплата</a></li>
+											<li><a href="order.php">Оплата</a></li>
 											<li><a href="contact.php">Контакты</a></li>
 										</ul>
 									</li>
+									<?php
+										$show_categories = mysqli_query($conn, "SELECT * FROM `Category`");
+
+										$categories = array();
+						
+										while ($category_info = mysqli_fetch_array($show_categories, MYSQLI_ASSOC)) {
+											$categories[] = $category_info;
+										}
+									?>
 									<li class="hassubs">
-										<a href="categories.php">Категории</a>
+										<a href="#">Категории</a>
 										<ul>
-											<li><a href="categories.php">Сервиз</a></li>
-											<li><a href="categories.php">Часы</a></li>
-											<li><a href="categories.php">Лампы</a></li>
-											<li><a href="categories.php">Шкатулки</a></li>
-											<li><a href="categories.php">Вазы</a></li>
+											<li><a href="categories_1.php">Сервиз</a></li>
+											<li><a href="categories_2.php">Часы</a></li>
+											<li><a href="categories_3.php">Лампы</a></li>
+											<li><a href="categories_4.php">Шкатулки</a></li>
 										</ul>
 									</li>
-									<li><a href="#">Другое</a></li>
-									<li><a href="#">Пожелания</a></li>
+									<li><a href="../user_auth/register.php">Регистрация</a></li>
+									<?php if(isset($_SESSION['user'])): ?>
+										<li><a href="../user_auth/logout.php">Выход</a></li>
+									<?php else: ?>
+										<li><a href="../user_auth/login.php">Вход</a></li>
+									<?php endif; ?>
 									<li><a href="contact.php">Контакты</a></li>
 								</ul>
 							</nav>
@@ -128,26 +139,24 @@
 				</div>
 				<ul class="page_menu_nav menu_mm">
 					<li class="page_menu_item has-children menu_mm">
-						<a href="main.php">Главная<i class="fa fa-angle-down"></i></a>
+						<a href="../index.php">Главная<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.php">Категории<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="product.php">Товары<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="../index.php">Товары<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="cart.php">Корзина<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="checkout.php">Оплата<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="order.php">Оплата<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
 					<li class="page_menu_item has-children menu_mm">
-						<a href="categories.php">Категории<i class="fa fa-angle-down"></i></a>
+						<a href="#">Категории<i class="fa fa-angle-down"></i></a>
 						<ul class="page_menu_selection menu_mm">
-							<li class="page_menu_item menu_mm"><a href="categories.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.php">Часы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.php">Лампы<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="categories.php">Вазы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories_1.php">Сервиз<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories_2.php">Часы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories_3.php">Лампы<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="categories_4.php">Шкатулки<i class="fa fa-angle-down"></i></a></li>
 						</ul>
 					</li>
-					<li class="page_menu_item menu_mm"><a href="main.php">Другое<i class="fa fa-angle-down"></i></a></li>
+					<li class="page_menu_item menu_mm"><a href="../index.php">Другое<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="#">Пожелания<i class="fa fa-angle-down"></i></a></li>
 					<li class="page_menu_item menu_mm"><a href="contact.php">Контакты<i class="fa fa-angle-down"></i></a></li>
 				</ul>
@@ -178,7 +187,7 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="main.php">Главная</a></li>
+										<li><a href="../index.php">Главная</a></li>
 										<li><a href="categories.php">Категории</a></li>
 										<li>Корзина</li>
 									</ul>
@@ -209,14 +218,14 @@
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="main.php">Продолжить покупки</a></div>
+						<div class="button continue_shopping_button"><a href="../index.php">Продолжить покупки</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
 							<form action="checkout.php" method="POST" class="clear_cart_button">
 								<div class="button clear_cart_button"><a href="#">
 									<button type="submit" name="delall" style="border: none; width: 100%; cursor: pointer;">Очистить корзину</button>
 								</a></div>
 							</form>
-							<div class="button update_cart_button"><a href="#">Обновить корзину</a></div>
+							<div class="button update_cart_button"><a href="cart.php">Обновить корзину</a></div>
 						</div>
 					</div>
 				</div>
